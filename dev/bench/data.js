@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794567479397,
+  "lastUpdate": 1794567491724,
   "repoUrl": "https://github.com/iAmMichaelConnor/total-noir",
   "entries": {
     "ACIR Opcodes": [
@@ -420,6 +420,217 @@ window.BENCHMARK_DATA = {
             "name": "u64_mul_div.json/main",
             "value": 2839,
             "unit": "circuit_size"
+          }
+        ]
+      }
+    ],
+    "Brillig Bytecode Size": [
+      {
+        "commit": {
+          "author": {
+            "email": "mike@aztec.foundation",
+            "name": "iAmMichaelConnor",
+            "username": "iAmMichaelConnor"
+          },
+          "committer": {
+            "email": "mike@aztec.foundation",
+            "name": "iAmMichaelConnor",
+            "username": "iAmMichaelConnor"
+          },
+          "distinct": true,
+          "id": "4cb8592f81bf312bfb49eeacfa4c7ca7c383d38e",
+          "message": "feat: initial release of total, total_aztec and total-lint",
+          "timestamp": "2026-11-13T10:54:51Z",
+          "tree_id": "f4adadf8ac1a49c4973973211c0c48cc2241589e",
+          "url": "https://github.com/iAmMichaelConnor/total-noir/commit/4cb8592f81bf312bfb49eeacfa4c7ca7c383d38e"
+        },
+        "date": 1794567491694,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "bounded_vec_push_get_16",
+            "value": 258,
+            "unit": "opcodes"
+          },
+          {
+            "name": "ecdsa_k1_verify",
+            "value": 155750,
+            "unit": "opcodes"
+          },
+          {
+            "name": "field_add_128",
+            "value": 53,
+            "unit": "opcodes"
+          },
+          {
+            "name": "field_inverse",
+            "value": 36,
+            "unit": "opcodes"
+          },
+          {
+            "name": "field_lt",
+            "value": 65,
+            "unit": "opcodes"
+          },
+          {
+            "name": "field_pow",
+            "value": 380,
+            "unit": "opcodes"
+          },
+          {
+            "name": "field_sqrt",
+            "value": 2468,
+            "unit": "opcodes"
+          },
+          {
+            "name": "fits_bits_160",
+            "value": 50,
+            "unit": "opcodes"
+          },
+          {
+            "name": "fits_bits_64",
+            "value": 49,
+            "unit": "opcodes"
+          },
+          {
+            "name": "grumpkin_decode",
+            "value": 48,
+            "unit": "opcodes"
+          },
+          {
+            "name": "i64_add",
+            "value": 122,
+            "unit": "opcodes"
+          },
+          {
+            "name": "i64_mul",
+            "value": 199,
+            "unit": "opcodes"
+          },
+          {
+            "name": "i64_mul_div",
+            "value": 247,
+            "unit": "opcodes"
+          },
+          {
+            "name": "index_16",
+            "value": 120,
+            "unit": "opcodes"
+          },
+          {
+            "name": "keccak256_var_136",
+            "value": 881,
+            "unit": "opcodes"
+          },
+          {
+            "name": "merkle_root_20",
+            "value": 159,
+            "unit": "opcodes"
+          },
+          {
+            "name": "msm_or_1",
+            "value": 1334,
+            "unit": "opcodes"
+          },
+          {
+            "name": "msm_or_2",
+            "value": 1915,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon2_var_8",
+            "value": 290,
+            "unit": "opcodes"
+          },
+          {
+            "name": "schnorr_verify",
+            "value": 1949,
+            "unit": "opcodes"
+          },
+          {
+            "name": "secp256k1_on_curve",
+            "value": 2341,
+            "unit": "opcodes"
+          },
+          {
+            "name": "sha256_var_64",
+            "value": 891,
+            "unit": "opcodes"
+          },
+          {
+            "name": "shl_64",
+            "value": 258,
+            "unit": "opcodes"
+          },
+          {
+            "name": "sort_8",
+            "value": 583,
+            "unit": "opcodes"
+          },
+          {
+            "name": "to_i64",
+            "value": 58,
+            "unit": "opcodes"
+          },
+          {
+            "name": "to_u64",
+            "value": 58,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u128_add",
+            "value": 41,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u128_div",
+            "value": 109,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u128_mul",
+            "value": 104,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u128_mul_div",
+            "value": 537,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u128_shl",
+            "value": 166,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u128_widening_mul",
+            "value": 106,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u64_add",
+            "value": 39,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u64_div",
+            "value": 65,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u64_isqrt",
+            "value": 182,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u64_mul",
+            "value": 119,
+            "unit": "opcodes"
+          },
+          {
+            "name": "u64_mul_div",
+            "value": 129,
+            "unit": "opcodes"
           }
         ]
       }
