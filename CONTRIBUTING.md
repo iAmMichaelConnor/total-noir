@@ -10,14 +10,14 @@ CI (`.github/workflows/test.yml`) runs on every pull request and every push to
 
 | Check | Command | Toolchain |
 |---|---|---|
-| Library tests | `nargo test` in `noir/total`, then `noir/total_witness_check/run.sh` | every Noir release since 1.0.0-rc.3, and nightly |
-| Oracle tests | `yarn install`, then `scripts/run.sh` ([below](#oracle-tests)) | every Noir release since 1.0.0-rc.3, and nightly; Node.js 22 |
+| Library tests | `nargo test` in `noir/total`, then `noir/total_witness_check/run.sh` | Noir 1.0.0 |
+| Oracle tests | `yarn install`, then `scripts/run.sh` ([below](#oracle-tests)) | Noir 1.0.0; Node.js 22 |
 | Backend proofs of the MSM-based entries | `noir/total_prove_check/run.sh` (msm_or and schnorr_verify proved and verified with bb on inputs bb's MSM gadget cannot prove unblinded) | nargo 1.0.0-rc.3, bb 6.0.0 |
 | Backend proofs of the ECDSA entries | `noir/total_ecdsa_prove_check/run.sh` (ecdsa_k1_verify and ecdsa_r1_verify proved and verified with bb on inputs bb's ECDSA gadgets cannot prove unblinded) | nargo 1.0.0-rc.3, bb 6.0.0 |
 | ECDSA totality: computed facts | `scripts/ecdsa_totality_checks.py` (seconds); `scripts/ecdsa_alias_multiplicity.py` (minutes, many cores; not per-PR) | Python 3 |
 | ECDSA totality: model, emulation and bb | `scripts/ecdsa_differential.py` (not per-PR; run on any change to `noir/total/src/ecdsa/` and on a bb bump) | nargo 1.0.0-rc.3, bb 6.0.0, Python 3 |
 | Aztec packages and examples | `scripts/test-aztec.sh` | nargo 1.0.0-rc.3, bb 6.0.0, `@aztec-labs/txe` 6.0.0 |
-| Formatting | `nargo fmt --check` in every package | nargo 1.0.0-rc.3 |
+| Formatting | `nargo fmt --check` in every package | Noir 1.0.0 |
 | Lint tool | `cargo fmt --check`, `cargo clippy --locked --all-targets -- -D warnings`, `cargo test --locked` in `lint/total-lint` | stable Rust, nargo 1.0.0-rc.3 |
 | co-noir hints | `scripts/mpc-check.sh` ([docs/co-noir.md](docs/co-noir.md)) | nargo 1.0.0-rc.3, stable Rust |
 
@@ -71,7 +71,7 @@ NARGO=/path/to/nargo scripts/run.sh              # another nargo
 
 The package is outside `noir/total`, so plain `nargo test` there needs no
 server. By default each test is fuzzed for 5 seconds or 100000 executions,
-whichever comes first. CI runs it in the `test` job, on every Noir version.
+whichever comes first. CI runs it in the `test` job.
 
 ## Bumping bb
 

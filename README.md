@@ -242,10 +242,11 @@ It is a review aid, not a proof of totality. It is tested on nargo
 
 ## Noir version compatibility
 
-CI tests `total` with every Noir release since 1.0.0-rc.3, and with nightly.
-On each of them it also fuzzes the secp, ECDSA, Schnorr, hash and Merkle
-entries against references written outside Noir
-([CONTRIBUTING.md](CONTRIBUTING.md#oracle-tests)).
+CI tests `total` with Noir 1.0.0, and proves its black-box entries with
+bb 6.0.0. It also fuzzes the secp, ECDSA, Schnorr, hash and Merkle entries
+against references written outside Noir
+([CONTRIBUTING.md](CONTRIBUTING.md#oracle-tests)). A nightly job runs the
+same tests on the latest Noir nightly.
 
 `total_aztec` and the examples follow aztec-nr v6.0.0, which needs nargo
 1.0.0-rc.3 and bb 6.0.0.
