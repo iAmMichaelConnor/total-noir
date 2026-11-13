@@ -1,0 +1,125 @@
+{
+  "total_lint_baseline": 1,
+  "entries": [
+    {
+      "function": "seal_to",
+      "class": "brillig-oracle",
+      "label": "assert_compatible_oracle_version_wrapper",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/oracle/version.nr",
+      "text": "assert_compatible_oracle_version_oracle(ORACLE_VERSION_MAJOR, ORACLE_VERSION_MINOR);",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "brillig-oracle",
+      "label": "call_private_function_internal",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/oracle/call_private_function.nr",
+      "text": "call_private_function_oracle(",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "brillig-oracle",
+      "label": "is_execution_in_revertible_phase",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/oracle/tx_phase.nr",
+      "text": "is_execution_in_revertible_phase_oracle(current_counter)",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "brillig-oracle",
+      "label": "load",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/oracle/execution_cache.nr",
+      "text": "get_hash_preimage_oracle(hash)",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "brillig-oracle",
+      "label": "set_hash_preimage_oracle_wrapper",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/oracle/execution_cache.nr",
+      "text": "set_hash_preimage_oracle(values, hash);",
+      "count": 2
+    },
+    {
+      "function": "seal_to",
+      "class": "hint-unreviewed",
+      "label": "ASSERT",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/context/private_context.nr",
+      "text": "| (current_counter < self.expected_revertible_side_effect_counter) {",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "hint-unreviewed",
+      "label": "ASSERT",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/context/private_context.nr",
+      "text": "} else if current_counter > self.expected_non_revertible_side_effect_counter {",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "hint-unreviewed",
+      "label": "ASSERT",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/macros/internals_functions_generation/external/private.nr",
+      "text": "assert_eq(",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "hint-unreviewed",
+      "label": "RANGE 1",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/context/private_context.nr",
+      "text": "let is_revertible = unsafe { is_execution_in_revertible_phase(current_counter) };",
+      "count": 2
+    },
+    {
+      "function": "seal_to",
+      "class": "hint-unreviewed",
+      "label": "RANGE 1",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/context/private_context.nr",
+      "text": "| (current_counter < self.expected_revertible_side_effect_counter) {",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "hint-unreviewed",
+      "label": "RANGE 1",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/context/private_context.nr",
+      "text": "} else if current_counter > self.expected_non_revertible_side_effect_counter {",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "hint-unreviewed",
+      "label": "RANGE 32",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/context/private_context.nr",
+      "text": "| (current_counter < self.expected_revertible_side_effect_counter) {",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "hint-unreviewed",
+      "label": "RANGE 32",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/context/private_context.nr",
+      "text": "} else if current_counter > self.expected_non_revertible_side_effect_counter {",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "input-falsifiable",
+      "label": "RANGE 32",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/context/private_context.nr",
+      "text": "side_effect_counter: inputs.start_side_effect_counter + 1,",
+      "count": 1
+    },
+    {
+      "function": "seal_to",
+      "class": "input-falsifiable",
+      "label": "RANGE 64",
+      "file": "github.com/aztec-labs-eng/aztec-node/v6.0.0/noir-projects/aztec-nr/aztec/src/context/private_context.nr",
+      "text": "expiration_timestamp: inputs.anchor_block_header.timestamp() + MAX_TX_LIFETIME,",
+      "count": 1
+    }
+  ]
+}

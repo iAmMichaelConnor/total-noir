@@ -1,0 +1,6 @@
+[package]
+name = "contract_demo"
+type = "contract"
+compiler_version = ">=1.0.0"
+
+[dependencies]

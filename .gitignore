@@ -1,0 +1,10 @@
+target
+export
+build
+gates_report.json
+brillig_report.json
+benchmark-*.json
+*.gz
+node_modules
+dist
+__pycache__

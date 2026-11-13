@@ -1,0 +1,2 @@
+[workspace]
+members = ["grief_account", "short_account", "caller"]

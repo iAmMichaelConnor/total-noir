@@ -1,0 +1,16 @@
+# Output of run.sh on nargo 1.0.0-rc.3 (5a7ee9bf), bb 6.0.0.
+inner: ZK UltraHonk proof, 115 vk fields, 458 proof fields
+outer ACIR: RECURSIVE_AGGREGATION verification_key: [...], proof: [...], public_inputs: [w575], key_hash: w574, proof_type: 6, predicate: w0
+uncond ACIR: RECURSIVE_AGGREGATION verification_key: [...], proof: [...], public_inputs: [w574], key_hash: w573, proof_type: 6, predicate: 1
+outer   true-valid       execute ok    prove ok verify ok
+outer   false-garbage    execute ok    prove ok verify ok
+outer   false-zero       execute ok    prove ok verify ok
+outer   false-valid      execute ok    prove ok verify ok
+outer   true-garbage     execute ok    prove FAILS (Assertion failed: (remainder_1024.lo == uint512_t(0))) verify -
+outer   true-zero        execute ok    prove FAILS (Recursive Ultra Verifier: VK Hash Mismatch (mem: 28.65 MiB)) verify -
+outer   true-tampered    execute ok    prove FAILS (Failed to verify the generated proof!) verify -
+outer   true-wrongpi     execute ok    prove FAILS (Failed to verify the generated proof!) verify -
+outer   true-wronghash   execute ok    prove FAILS (Recursive Ultra Verifier: VK Hash Mismatch (mem: 28.66 MiB)) verify -
+uncond  true-valid       execute ok    prove ok verify ok
+uncond  true-garbage     execute ok    prove FAILS (Assertion failed: (remainder_1024.lo == uint512_t(0))) verify -
+outer gates: "circuit_size": 703984

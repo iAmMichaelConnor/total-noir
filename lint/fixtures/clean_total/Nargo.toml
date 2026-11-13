@@ -1,0 +1,6 @@
+[package]
+name = "clean_total"
+type = "bin"
+compiler_version = ">=1.0.0"
+
+[dependencies]

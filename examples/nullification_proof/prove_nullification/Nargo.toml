@@ -1,0 +1,11 @@
+[package]
+name = "prove_nullification"
+type = "bin"
+compiler_version = ">=1.0.0"
+
+[dependencies]
+# Aztec v6 protocol hashes and domain separators. protocol_types is not in
+# the aztec-node repository; this is the URL aztec-nr v6.0.0 itself uses for
+# it. This circuit shares no types with the contracts, so the one-URL rule
+# for the `aztec` dependency does not apply here.
+protocol_types = { git = "https://github.com/AztecProtocol/aztec-packages", tag = "v6.0.0", directory = "noir-projects/fnd/noir-protocol-circuits/crates/types" }

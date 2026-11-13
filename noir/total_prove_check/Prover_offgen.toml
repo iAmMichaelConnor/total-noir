@@ -1,0 +1,15 @@
+# bb's offset generators as bases: o_1 at position 1 (scalar 5), o_1 and
+# o_2 at positions 1 and 2, and o_2 as a Schnorr key (s = 5, e = 7).
+x1 = ["0x7ecf4931ea0257c089816cfc3ed44c9172b22622539fdad7535401a7a99fb4b"]
+y1 = ["0xf8bf0d676c12c8e10ea1f8fe9e5100db24b89ef3006b321f2178adc6281ec74"]
+lo1 = ["5"]
+hi1 = ["0"]
+x2 = ["0x7ecf4931ea0257c089816cfc3ed44c9172b22622539fdad7535401a7a99fb4b", "0xfb76e5904e203fe96cf620f86739e685c85c56774b23c1e7c86fba3290ae42b"]
+y2 = ["0xf8bf0d676c12c8e10ea1f8fe9e5100db24b89ef3006b321f2178adc6281ec74", "0x2a32122a08e2dcc594f4b657eb5e2e4f84cb67f06ab4b2d432c5f61c22330a3f"]
+lo2 = ["5", "7"]
+hi2 = ["0", "0"]
+pk_x = "0xfb76e5904e203fe96cf620f86739e685c85c56774b23c1e7c86fba3290ae42b"
+pk_y = "0x2a32122a08e2dcc594f4b657eb5e2e4f84cb67f06ab4b2d432c5f61c22330a3f"
+sig = ["5", "0", "7", "0"]
+msg = "0"
+valid = false

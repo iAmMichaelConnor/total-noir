@@ -1,0 +1,6 @@
+[package]
+name = "review_vendor"
+type = "lib"
+compiler_version = ">=1.0.0"
+
+[dependencies]

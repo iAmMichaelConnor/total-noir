@@ -1,0 +1,10 @@
+# The inputs of the test matches_aztec_nr, for `nargo execute` by hand.
+contract_address = "0x0d71cf4c20298a19a16e5e5f3faee1b5d3dc0c58efc9b682660f3c15f67adfdb"
+storage_slot = "0x01"
+owner = "0x26fa553bb60e307ea85e01b5ac24f31b6f07acd29b5e93e1d447f0c42a9680f0"
+executor = "0x00"
+expiry = "0x00"
+fields = ["0x03e8"]
+randomness = "0x5eed"
+nonce = "0x18db22373c37fea7ed51d55576cdf1e7720697a75d97982647a7165f4a2838a4"
+nhk_app = "0x1605952d096fe373506674295a7aad4a40e8207ad8defb2fac8e4a9dcfb5cfe4"

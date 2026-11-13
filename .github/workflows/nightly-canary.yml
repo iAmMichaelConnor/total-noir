@@ -1,0 +1,55 @@
+name: Noir Nightly Canary
+
+on:
+  schedule:
+    # Run a check at 9 AM UTC
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  test:
+    name: Test on Nargo Nightly
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install Nargo
+        uses: noir-lang/noirup@v0.1.5
+        with:
+          toolchain: nightly
+
+      - name: Run tests
+        working-directory: noir/total
+        run: nargo test
+
+      - name: Setup Node.js and install dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.15.0
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Run the oracle tests
+        run: ./scripts/run.sh
+
+      - name: Alert on nightly breakage
+        uses: JasonEtco/create-an-issue@v2
+        if: ${{ failure() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WORKFLOW_NAME: ${{ github.workflow }}
+          WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        with:
+          update_existing: true
+          filename: .github/NIGHTLY_CANARY_DIED.md

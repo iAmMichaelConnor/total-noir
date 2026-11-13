@@ -1,0 +1,7 @@
+[package]
+name = "review_demo"
+type = "bin"
+compiler_version = ">=1.0.0"
+
+[dependencies]
+review_vendor = { path = "../review_vendor" }

@@ -1,0 +1,6 @@
+[package]
+name = "mpc_ops_demo"
+type = "bin"
+compiler_version = ">=1.0.0"
+
+[dependencies]

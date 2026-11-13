@@ -1,0 +1,6 @@
+[package]
+name = "note_width"
+type = "bin"
+compiler_version = ">=1.0.0"
+
+[dependencies]

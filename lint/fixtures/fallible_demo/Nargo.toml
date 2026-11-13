@@ -1,0 +1,6 @@
+[package]
+name = "fallible_demo"
+type = "bin"
+compiler_version = ">=1.0.0"
+
+[dependencies]

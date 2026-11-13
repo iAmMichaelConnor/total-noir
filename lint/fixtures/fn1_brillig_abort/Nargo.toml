@@ -1,0 +1,6 @@
+[package]
+name = "fn1_brillig_abort"
+type = "bin"
+compiler_version = ">=1.0.0"
+
+[dependencies]

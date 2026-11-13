@@ -1,0 +1,7 @@
+[package]
+name = "fn2_impostor"
+type = "bin"
+compiler_version = ">=1.0.0"
+
+[dependencies]
+helper = { path = "vendor/total" }

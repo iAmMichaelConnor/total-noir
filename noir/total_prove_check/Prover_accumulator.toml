@@ -1,0 +1,17 @@
+# Scalar-dependent accumulator collisions: a base whose scalar-5 run
+# collides in the accumulator (with scalar 6 it would not), and two bases
+# with scalar 2^252 colliding in the first round; the schnorr library's
+# pinned_vector_small.
+x1 = ["0xd64daeec4d6d8c41b957cf310b5abaf2be97a10c253179d0efaa1f19bd4b828"]
+y1 = ["0xc6745f6006365d2257c551e71f5d498c19f235ea02bd04bbe92cca4e25c8666"]
+lo1 = ["5"]
+hi1 = ["0"]
+x2 = ["0x2ed1d8abc874c2c9e668f853421c67d5764bade65188c9c7652aaf1c4e7ced2b", "0x2148c4ea7b79b59cec01f91b6be436b13db54c60b0d8dbde27a7017357357b3e"]
+y2 = ["0x11e25aef399e2e9be0e6fddbcbe878a0743661d0a776a42732e94c5158de66ce", "0x2561dae2a0c1962474735c11e38edfcf5cf132ee60859cd27948caf9c9501719"]
+lo2 = ["0", "0"]
+hi2 = ["0x10000000000000000000000000000000", "0x10000000000000000000000000000000"]
+pk_x = "0x2c39bbbde2d0ffcb5c4317dcbfa1771cf554a2f33c647446632fa707a5bf5f3f"
+pk_y = "0x2b9c81935298af5ebe22f1a7279bb76781e6cadba3fb6c5c41ed942392dc687c"
+sig = ["0x5fd1ac0ad411110674830c54cb506212", "0x281906862cdb4e0efec7226d757fe803", "0x6c368959f958e525d761d06c47fd2ad6", "0x013f6a902c6c0efafdadbd4de409690d"]
+msg = "0x2bc"
+valid = true

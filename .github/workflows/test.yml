@@ -1,0 +1,206 @@
+name: Noir tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+  # Oldest release `total` is tested against; every later
+  # release and nightly are tested too.
+  MINIMUM_NOIR_VERSION: 1.0.0-rc.3
+  # `total_aztec` follows aztec-nr, which pins its compiler: Aztec v6.0.0
+  # ships nargo 1.0.0-rc.3.
+  AZTEC_NOIR_VERSION: 1.0.0-rc.3
+  AZTEC_VERSION: 6.0.0
+  # total-lint links the compiler crates of this release, and its fixture
+  # tests need the matching nargo.
+  LINT_NOIR_VERSION: 1.0.0-rc.3
+
+jobs:
+  noir-version-list:
+    name: Query supported Noir versions
+    runs-on: ubuntu-latest
+    outputs:
+      noir_versions: ${{ steps.get_versions.outputs.versions }}
+    steps:
+      - name: List Noir releases since the minimum version
+        id: get_versions
+        run: |
+          # gh returns the Noir releases in reverse chronological order so we keep all releases published after the minimum supported version.
+          # Noir's `v1.0.0-*` releases are all marked as pre-releases, so they must not be excluded. Daily `nightly-*` releases are
+          # interleaved with them, so the limit has to be large enough to reach back to the minimum version, and they are filtered
+          # out by keeping only `v`-prefixed tags. The `v` prefix is stripped to match `MINIMUM_NOIR_VERSION`.
+          VERSIONS=$(gh release list -R noir-lang/noir --exclude-drafts --limit 1000 --json tagName -q 'map(.tagName | select(startswith("v")) | ltrimstr("v")) | index(env.MINIMUM_NOIR_VERSION) as $index | if $index then .[0:$index+1] else [env.MINIMUM_NOIR_VERSION] end')
+          echo "versions=$VERSIONS"
+          echo "versions=$VERSIONS" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  test:
+    needs: [noir-version-list]
+    name: Test on Nargo ${{ matrix.toolchain }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: ${{ fromJson( needs.noir-version-list.outputs.noir_versions ) }}
+        include:
+          - toolchain: nightly
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install Nargo
+        uses: noir-lang/noirup@v0.1.5
+        with:
+          toolchain: ${{ matrix.toolchain }}
+
+      - name: Run tests
+        # noir/total is its own nargo root: a workspace at the repository
+        # root would also claim the Aztec packages and the examples.
+        working-directory: noir/total
+        run: nargo test
+
+      - name: Run the witness-level check
+        run: noir/total_witness_check/run.sh
+
+      - name: Setup Node.js and install dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.15.0
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
+
+      - name: Install dependencies
+        run: |
+          yarn --frozen-lockfile
+
+      - name: Run the oracle tests
+        run: ./scripts/run.sh
+
+  test-aztec:
+    name: Test total_aztec and the examples (Aztec v6)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install Nargo
+        uses: noir-lang/noirup@v0.1.5
+        with:
+          toolchain: ${{ env.AZTEC_NOIR_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install bb
+        run: |
+          curl -L https://bbup.aztec.network | bash
+          ~/.bb/bbup -v ${{ env.AZTEC_VERSION }}
+          echo "$HOME/.bb" >> "$GITHUB_PATH"
+          sudo apt install libc++-dev
+
+      - name: Prove the MSM-based entries with bb
+        # msm_or and schnorr_verify on inputs bb's MSM gadget cannot prove
+        # unblinded: nargo execute, then bb prove and verify per input.
+        run: noir/total_prove_check/run.sh
+
+      - name: Prove the ECDSA entries with bb
+        # ecdsa_k1_verify and ecdsa_r1_verify on inputs bb's ECDSA gadgets
+        # cannot prove unblinded: nargo execute, then bb prove and verify
+        # per input. A failure after a bb upgrade means the gadgets changed
+        # (noir/total/src/ecdsa/k1_emul.nr).
+        run: noir/total_ecdsa_prove_check/run.sh
+
+      - name: Install the TXE
+        run: npm install --global @aztec-labs/txe@${{ env.AZTEC_VERSION }}
+
+      - name: Run tests
+        run: ./scripts/test-aztec.sh
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install Nargo
+        uses: noir-lang/noirup@v0.1.5
+        with:
+          toolchain: ${{ env.MINIMUM_NOIR_VERSION }}
+
+      - name: Run formatter
+        run: |
+          status=0
+          for dir in $(git ls-files '*Nargo.toml' | xargs -n1 dirname); do
+            (cd "$dir" && nargo fmt --check) || { echo "::error::nargo fmt --check failed in $dir"; status=1; }
+          done
+          exit $status
+
+  lint-tool:
+    name: total-lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install Nargo
+        uses: noir-lang/noirup@v0.1.5
+        with:
+          toolchain: ${{ env.LINT_NOIR_VERSION }}
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            lint/total-lint/target
+          key: cargo-${{ runner.os }}-${{ hashFiles('lint/total-lint/Cargo.lock') }}
+
+      - name: Check formatting
+        working-directory: lint/total-lint
+        run: cargo fmt --check
+
+      - name: Run clippy
+        working-directory: lint/total-lint
+        run: cargo clippy --locked --all-targets -- -D warnings
+
+      - name: Run tests
+        working-directory: lint/total-lint
+        run: cargo test --locked
+        env:
+          TOTAL_LINT_REQUIRE_NARGO: 1
+
+      - name: Check hints stay runnable in co-noir
+        run: scripts/mpc-check.sh
+
+  # This is a job which depends on all test jobs and reports the overall status.
+  # This allows us to add/remove test jobs without having to update the required workflows.
+  tests-end:
+    name: Noir End
+    runs-on: ubuntu-latest
+    # We want this job to always run (even if the dependant jobs fail) as we want this job to fail rather than skipping.
+    if: ${{ always() }}
+    needs:
+      - test
+      - test-aztec
+      - format
+      - lint-tool
+
+    steps:
+      - name: Report overall success
+        run: |
+          if [[ $FAIL == true ]]; then
+              exit 1
+          else
+              exit 0
+          fi
+        env:
+          # We treat any cancelled, skipped or failing jobs as a failure for the workflow as a whole.
+          FAIL: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'skipped') }}

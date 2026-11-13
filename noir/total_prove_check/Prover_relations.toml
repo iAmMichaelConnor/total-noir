@@ -1,0 +1,15 @@
+# -(1/15) o_1 (scalar 5); a two-term MSM [5]A + [7]P whose sum is minus
+# the gadget's total offset for two bases; -(1/15) o_2 as a Schnorr key.
+x1 = ["0x25ad41cc795fc510b656aea4992667a6fa28cc5f4c7b3d17796444e9f12acc0b"]
+y1 = ["0x2c8a9e441b52c24ff6cea7dbb03605cc605190935b11e7a880a261794c86441"]
+lo1 = ["5"]
+hi1 = ["0"]
+x2 = ["0xc86ad3ab8b01adab12c7cc6e60683894b926177050d912fdccdc4a0018c975a", "0x2d1d5232623bbde43e880f51fb18dafee26290bc6c8a6fc72939b5d1486d494d"]
+y2 = ["0x1e8d4c68fb1746c192422257da8fdf1e81215f37e5d7bb6a5c84a143f3f7a4fe", "0x5d966f8a7c2c831e57460c4fa7c480c13ea0ee2292337cc5f366f30519be6a7"]
+lo2 = ["5", "7"]
+hi2 = ["0", "0"]
+pk_x = "0x23d26cbbc30f73d118577822621b815c5237a7e239312ff1d197ba4948a2ee9a"
+pk_y = "0x3029dcebcc17d09a134832fe0eafa83f5b8d09b522ac9c352475441c24ed6c02"
+sig = ["0xf3bc3b7147acb9c621fd9f72dbf15ffa", "0x08599f379f0301dfefdbd0272554454d", "0x97065383ebbbd76620398792bd259bc2", "0x2ceaee87f45b7a417f0ffb05451a8c92"]
+msg = "1"
+valid = false
