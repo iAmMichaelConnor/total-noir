@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794569071425,
+  "lastUpdate": 1794569072766,
   "repoUrl": "https://github.com/iAmMichaelConnor/total-noir",
   "entries": {
     "ACIR Opcodes": [
@@ -443,6 +443,215 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/iAmMichaelConnor/total-noir/commit/4cb8592f81bf312bfb49eeacfa4c7ca7c383d38e"
         },
         "date": 1794567479366,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "bounded_vec_push_get_16.json/main",
+            "value": 2947,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "ecdsa_k1_verify.json/main",
+            "value": 62769,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "field_add_128.json/main",
+            "value": 2837,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "field_inverse.json/main",
+            "value": 24,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "field_lt.json/main",
+            "value": 2841,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "field_pow.json/main",
+            "value": 3027,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "field_sqrt.json/main",
+            "value": 27,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "fits_bits_160.json/main",
+            "value": 3492,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "fits_bits_64.json/main",
+            "value": 2848,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "grumpkin_decode.json/main",
+            "value": 46,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "i64_add.json/main",
+            "value": 2845,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "i64_mul.json/main",
+            "value": 2849,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "i64_mul_div.json/main",
+            "value": 2887,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "index_16.json/main",
+            "value": 121,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "keccak256_var_136.json/main",
+            "value": 45073,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "merkle_root_20.json/main",
+            "value": 4562,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "msm_or_1.json/main",
+            "value": 4709,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "msm_or_2.json/main",
+            "value": 5353,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon2_var_8.json/main",
+            "value": 281,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "schnorr_verify.json/main",
+            "value": 5481,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "secp256k1_on_curve.json/main",
+            "value": 3332,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "sha256_var_64.json/main",
+            "value": 33944,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "shl_64.json/main",
+            "value": 3115,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "sort_8.json/main",
+            "value": 3433,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "to_i64.json/main",
+            "value": 2855,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "to_u64.json/main",
+            "value": 2855,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u128_add.json/main",
+            "value": 2783,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u128_div.json/main",
+            "value": 2860,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u128_mul.json/main",
+            "value": 2852,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u128_mul_div.json/main",
+            "value": 2914,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u128_shl.json/main",
+            "value": 2872,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u128_widening_mul.json/main",
+            "value": 2856,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u64_add.json/main",
+            "value": 2815,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u64_div.json/main",
+            "value": 2825,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u64_isqrt.json/main",
+            "value": 2822,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u64_mul.json/main",
+            "value": 2819,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "u64_mul_div.json/main",
+            "value": 2839,
+            "unit": "circuit_size"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f93196faeb775e6a58bcd8ce6eed425051f36f4f",
+          "message": "chore: Release 0.1.0 (#1)\n\nCo-authored-by: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>",
+          "timestamp": "2026-11-13T11:23:51Z",
+          "tree_id": "10e90f0d59c018405ae57e5013bc640a36e636f2",
+          "url": "https://github.com/iAmMichaelConnor/total-noir/commit/f93196faeb775e6a58bcd8ce6eed425051f36f4f"
+        },
+        "date": 1794569072741,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
